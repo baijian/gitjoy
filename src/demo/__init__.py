@@ -3,8 +3,25 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+#
+# Configs
+#
 app.config.from_object("website_config")
+try:
+    app.config.from_pyfile(app.config['PRODUCTION_CONFIG'], silent=False)
+    print '[SUCCESS] load config file: ' + app.config['PRODUCTION_CONFIG']
+except:
+    pass
 
+#
+# DB
+#
+from flask.ext.sqlalchemy import SQLAlchemy
+db = SQLAlchemy(app)
+
+#
+# Login
+#
 @app.route('/login', methods=['POST','GET'])
 def login():
     error = None
@@ -14,6 +31,13 @@ def login():
         else:
             error = 'different'
     return render_template('login.html', error=error)
+
+#
+# Blueprints
+#
+from demo.controllers import infos
+app.register_blueprint(infos.mod)
+
 
 @app.route('/hello')
 @app.route('/hello/<name>')

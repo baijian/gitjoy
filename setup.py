@@ -13,7 +13,8 @@ setup(
     package_dir = {'': 'src'},
     packages = find_packages('src'),
     install_requires = [
-        'Flask'
+        'Flask',
+        'Flask-SQLAlchemy',
     ],
 )
 
