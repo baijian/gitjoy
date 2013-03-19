@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
+
 import os
+
 from flask import Flask, render_template, request
+
+DEFAULT_BLUEPRINTS = (
+    user,
+)
 
 def load_configuration(app):
     config = app.config
@@ -17,7 +23,7 @@ def load_configuration(app):
         else:
             config.from_pyfile("/etc/demo.conf", silent=True)
 
-def configure_loggers(app):
+def configure_logging(app):
     if app.debug:
         import logging
         
@@ -25,18 +31,41 @@ def configure_loggers(app):
         logger.setLevel(logging.INFO)
         logger.addHandler(logging.StreamHandler())
 
-def configure_views(app):
-    from .views import infos
-    app.register_blueprint(infos.mod)
+def configure_blueprints(app, blueprints=None):
+    if blueprints is None:
+        blueprints = DEFAULT_BLUEPRINTS
+    for blueprint in blueprints:
+        app.register_blueprints(blueprint)
+
+def configure_templates_filters(app):
+    print "test"
+
+def configure_hook(app):
+    @app.before_request
+     def before_request():
+         pass
+
+def configure_error_handlers(app):
+    @app.errorhandler(403)
+    def forbidden_page(error):
+        return render_template("403.html"), 403
+
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template("404.html"), 404
+
+    @app.errorhandler(500)
+    def server_error_page(error):
+        return render_template("error.html"), 500
 
 app = Flask(__name__)
 
 load_configuration(app)
-configure_loggers(app)
+configure_loggings(app)
+configure_blueprints(app)
 
 #database
 from flask.ext.sqlalchemy import SQLAlchemy
-
 db = SQLAlchemy(app)
 
 __all__ = []
