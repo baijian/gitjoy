@@ -1,0 +1,4 @@
+# Templates
+recursive-include demo/templates *
+# Static files
+recursive-include demo/static *

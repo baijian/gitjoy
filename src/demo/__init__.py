@@ -64,9 +64,9 @@ load_configuration(app)
 configure_loggings(app)
 configure_blueprints(app)
 
-#database
-from flask.ext.sqlalchemy import SQLAlchemy
-db = SQLAlchemy(app)
+##database
+#from flask.ext.sqlalchemy import SQLAlchemy
+#db = SQLAlchemy(app)
 
 __all__ = []
 

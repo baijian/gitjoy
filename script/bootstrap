@@ -2,87 +2,16 @@
 # -*- coding: utf8 -*-
 
 import os
-import subprocess
-import hashlib
-import stat
+source = "https://raw.github.com/anjuke/bootstrap.py/v1.0/bootstrap.py"
+target = "%s/bootstrap.py" % os.path.dirname(os.path.abspath(__file__))
+if not os.path.isfile(target):
+    os.system("wget %s -O %s" % (source, target))
 
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__) + '..'))
-BOOTSTRAP_DIR = ROOT_DIR + '/.bootstrap'
-VIRTUALENV_DIR = ROOT_DIR + '/.virtualenv'
 
-def main():
-    if not os.path.exists(BOOTSTRAP_DIR):
-        print "mkdir %s" % BOOTSTRAP_DIR
-        os.makedirs(BOOTSTRAP_DIR)
+from bootstrap import bootstrap, ve
+bootstrap(os.path.dirname(os.path.abspath(__file__)) + "/..")
 
-    configure()
-    python_version_check()
-    install_virtualenv()
-    install_ve()
-    
-    ve('python %s/setup.py develop' % ROOT_DIR)
 
-def configure():
-    pass
-
-def python_version_check():
-    if sys.version_info < (2, 7, 0)
-        sys.stderr.write("You need python 2.7 or later to run this script.\n")
-        exit(1)
-
-def install_virtualenv():
-    if os.path.isfile(VIRTUALENV_DIR + "/bin/activate"):
-        print "%s exists" % VIRTUALENV_DIR
-        return True
-
-    version = None
-    try:
-        version = subprocess.check_output(['virtualenv','--version'])
-    except OSError:
-        pass
-    
-    if version:
-        print "virtualenv exists"
-        virtualenv = 'virtualenv'
-    else:
-        download(
-            'https://raw.github.com/pypa/virtualenv/1.8.4/virtualenv.py',
-            BOOTSTRAP_DIR + '/virtualenv-1.8.4.py',
-            '5af0bf28c6f0448075016a487b5d12bb'
-        )
-        virtualenv = 'python ' + BOOTSTRAP_DIR + '/virtualenv-1.8.4.py'
-
-    os.system("%s --distribute --no-site-packages '%s'" % (virtualenv, VIRTUALENV_DIR))
-
-def install_ve():
-    download(
-        'https://raw.github.com/anjuke/ve/7d1e6f49de41f121af4806418a27021972b07e5c/ve',
-        BOOTSTRAP_DIR + '/ve',
-        '3a2ae652af5adf08e6173124e7405395'
-    )
-    ve = BOOTSTRAP_DIR + '/ve'
-    st = os.stat(ve)
-    os.chmod(ve, st.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
-
-def ve(cmd):
-    os.system('%s%s %s' % (BOOTSTRAP_DIR, 've', cmd))
-
-def download(source, target=None, hash=None):
-    if target and hash and os.path.isfile(target):
-        if (hash == md5(target)):
-            print '%s exists' % target
-            return True
-    cmd = "wget -c '%s'" % source
-    if target:
-        cmd = cmd + " -O '%s'" % target
-    try:
-        os.system(cmd)
-    except:
-        return False
-    return True
-
-def md5(filename):
-    return hashlib.md5(open(filename, 'rb').read()).hexdigest()
-
-if __name__ == '__main__':
-    exit(main())
+ve("pip install Fabric==1.6")
+ve("pip install fabtools==0.13")
+ve("vagrant up")
