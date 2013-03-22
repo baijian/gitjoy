@@ -4,6 +4,9 @@ import os
 
 from flask import Flask, render_template, request
 
+from .extensions import db, mail, login_manager
+from .user import User
+
 DEFAULT_BLUEPRINTS = (
     user,
 )
@@ -23,6 +26,29 @@ def load_configuration(app):
         else:
             config.from_pyfile("/etc/demo.conf", silent=True)
 
+def configure_hook(app):
+    @app.before_request
+    def before_request():
+        pass
+
+def configure_blueprints(app, blueprints=None):
+    if blueprints is None:
+        blueprints = DEFAULT_BLUEPRINTS
+    for blueprint in blueprints:
+        app.register_blueprints(blueprint)
+
+def configure_extensions(app):
+    db.init_app(app)
+    mail.init_app(app)
+
+    login_manager.login_view = ''
+    login_manager.refresh_view = ''
+
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(id)
+    login_manager.setup_app(app)
+
 def configure_logging(app):
     if app.debug:
         import logging
@@ -31,19 +57,8 @@ def configure_logging(app):
         logger.setLevel(logging.INFO)
         logger.addHandler(logging.StreamHandler())
 
-def configure_blueprints(app, blueprints=None):
-    if blueprints is None:
-        blueprints = DEFAULT_BLUEPRINTS
-    for blueprint in blueprints:
-        app.register_blueprints(blueprint)
-
-def configure_templates_filters(app):
-    print "test"
-
-def configure_hook(app):
-    @app.before_request
-     def before_request():
-         pass
+def configure_template_filters(app):
+    pass
 
 def configure_error_handlers(app):
     @app.errorhandler(403)
@@ -58,61 +73,15 @@ def configure_error_handlers(app):
     def server_error_page(error):
         return render_template("error.html"), 500
 
+#Create a Flask app.
 app = Flask(__name__)
 
 load_configuration(app)
-configure_loggings(app)
+configure_hook(app)
 configure_blueprints(app)
-
-##database
-#from flask.ext.sqlalchemy import SQLAlchemy
-#db = SQLAlchemy(app)
+configure_extensions(app)
+configure_logging(app)
+configure_template_filters(app)
+configure_error_handlers(app)
 
 __all__ = []
-
-##
-## Configs
-##
-#app.config.from_object("website_config")
-#try:
-#    app.config.from_pyfile(app.config['PRODUCTION_CONFIG'], silent=False)
-#    print '[SUCCESS] load config file: ' + app.config['PRODUCTION_CONFIG']
-#except:
-#    pass
-#
-##
-## DB
-##
-#from flask.ext.sqlalchemy import SQLAlchemy
-#db = SQLAlchemy(app)
-#
-##
-## Login
-##
-#@app.route('/login', methods=['POST','GET'])
-#def login():
-#    error = None
-#    if request.method == 'GET':
-#        if request.args.get('username'):
-#            error = 'same'
-#        else:
-#            error = 'different'
-#    return render_template('login.html', error=error)
-#
-##
-## Blueprints
-##
-#from demo.controllers import infos
-#app.register_blueprint(infos.mod)
-#
-#
-#@app.route('/hello')
-#@app.route('/hello/<name>')
-#def hello(name=None):
-#    return render_template('hello.html', name=name)
-#
-#@app.errorhandler(404)
-#def not_found(error):
-#    return render_template('404.html'),404
-#
-

@@ -1,8 +1,24 @@
 # -*- coding: utf-8 -*-
 from fabric.api import *
 
-env.user = 'www-data'
-env.hosts = ['server1.com','server2.com']
+env.user = 'baijian'
+env.hosts = ['127.0.0.1']
+
+def run():
+    local("python manage.py run")
+
+def r():
+    run()
+
+def initdb():
+    local("python manage.py initdb")
+
+def debug():
+    initdb()
+    run()
+
+def d():
+    debug()
 
 def pack():
     #create a new source distribution as tarball
