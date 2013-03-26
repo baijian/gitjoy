@@ -25,6 +25,10 @@ setup(
         'Flask-Assets==0.8',
         'Flask-Script==0.5.3',
         'Flask-WTF==0.8.3',
+        'Flask-Mail==0.7.6',
+        'Flask-FlatPages==0.3',
+        'SQLAlchemy==0.8.0',
+        'pygit2==0.17.3',
     ],
 
     #dependency_links = ['http://xxx.xx.com'],

@@ -5,7 +5,7 @@ import os
 from flask import Flask, render_template, request
 
 from .extensions import db, mail, login_manager
-from .user import User
+from .user import User, user
 
 DEFAULT_BLUEPRINTS = (
     user,
@@ -35,7 +35,7 @@ def configure_blueprints(app, blueprints=None):
     if blueprints is None:
         blueprints = DEFAULT_BLUEPRINTS
     for blueprint in blueprints:
-        app.register_blueprints(blueprint)
+        app.register_blueprint(blueprint)
 
 def configure_extensions(app):
     db.init_app(app)

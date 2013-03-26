@@ -1,7 +1,7 @@
-python-flask-demo
+pytho-flask-demoo
 ===============
 
-##A demo project using flask 
+#oA demo project using flask 
 
 * 1.The folder structures of large application using python package rather than module
 
@@ -12,4 +12,5 @@ python-flask-demo
 * 4.Using fabric on vagrant instance
 
 * 5.Deploy your project with fabric
+
 

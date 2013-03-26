@@ -3,26 +3,32 @@
 from flask import Blueprint, render_template, current_app, redirect, url_for, send_from_directory
 from flask.ext.login import login_required, current_user
 
-from .models import User
+from .forms import PubkeyForm
+#from .biz import 
 
 user = Blueprint('user', __name__, url_prefix='/user')
 
-@user.route('/')
+@user.route('/<name>/')
+def index(name):
+    user = biz.get_user(username = name)
+    if not user:
+        abort(404)
+    return render_template("user/index.html")
+
+@user.route('/settings/')
+def settings():
+    pass
+
+@user.route('/settings/profile')
 @login_required
-def index():
-    return render_template('user/index.html', current_user=current_user)
+def profile():
+    return render_template('user/profile.html')
 
-@user.route('/<name>')
-def pub(name):
-    if current_user.is_authenticated() and current_user.name ==name:
-        return redirect(url_for('user.index'))
-    user = User.query.filter_by(name=name).first_or_404()
-    return render_template('user/show.html', user=user)
+@user.route('/settings/ssh')
+@login_required
+def ssh():
+    pubkeys = biz.get_ssh_pubkeys(current_user.id)
+    form = PubkeyForm()
+    return render_template('user/ssh.html', pubkeys=pubkeys, form=form)
 
-@user.route('/avatar')
-@user.route('/avatar/<path:avatar_filename>')
-def avatar(avatar_filename=None):
-    if avatar_filename is None:
-        avatar_filename = DEFAULT_USER_AVATAR
-    return send_from_directory(current_app.config['USER_AVATAR_UPLOAD_FOLDER'],avatar_filename)
 
