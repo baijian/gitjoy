@@ -1,7 +1,7 @@
 pytho-flask-demoo
 ===============
 
-#oA demo project using flask 
+#An demo project using flask 
 
 * 1.The folder structures of large application using python package rather than module
 
