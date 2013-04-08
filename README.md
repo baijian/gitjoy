@@ -1,7 +1,7 @@
-pytho-flask-demoo
+gitonion
 ===============
 
-#An demo project using flask 
+### Basic Info(using flask framework)
 
 * 1.The folder structures of large application using python package rather than module
 
