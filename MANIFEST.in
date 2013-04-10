@@ -1,4 +1,4 @@
-# Templates
-recursive-include demo/templates *
-# Static files
-recursive-include demo/static *
+## Templates
+#recursive-include demo/templates *
+## Static files
+#recursive-include demo/static *
