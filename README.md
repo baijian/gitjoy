@@ -13,4 +13,12 @@ gitonion
 
 * 5.Deploy your project with fabric
 
+### Team Develop using Vagrant
+
+* 1.Quick Start
+    https://gist.github.com/baijian/5356156
+
+* 2.Using fabric to provide your virtual machine environment when 
+    you start up your virtual machine(vagrant up).
+
 
