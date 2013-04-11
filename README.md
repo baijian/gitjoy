@@ -21,5 +21,4 @@ gitonion
 * 2.Using fabric to provide your virtual machine environment when 
     you start up your virtual machine(vagrant up).
 
-* 3.add
 
