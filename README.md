@@ -19,6 +19,7 @@ gitonion
     https://gist.github.com/baijian/5356156
 
 * 2.Using fabric to provide your virtual machine environment when 
-    you start up your virtual machine(vagrant up).
+    you start up your virtual machine(vagrant up)
+    -><a href="http://joinjoy.me/blog/2013/04/14/use-fabric-to-deploy-your-vagrant-environment/">demo</a>.
 
 
