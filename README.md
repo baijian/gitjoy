@@ -22,4 +22,4 @@ gitonion
     you start up your virtual machine(vagrant up)
     -><a href="http://joinjoy.me/blog/2013/04/14/use-fabric-to-deploy-your-vagrant-environment/">demo</a>.
 
-
+测试
