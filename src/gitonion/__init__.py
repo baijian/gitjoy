@@ -48,7 +48,7 @@ def configure_extensions(app):
 
     @login_manager.user_loader
     def load_user(id):
-        return User.query.get(id)
+        return User.query.get(int(id))
     login_manager.setup_app(app)
 
 def configure_logging(app):

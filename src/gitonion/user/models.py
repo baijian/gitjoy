@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     username = Column(String(32), unique=True, nullable=False)
     display_name = Column(String(32), nullable=False)
     email = Column(String(255), unique=True, nullable=False)
-
+    
     status = Column(Integer, nullable=False)
     flags = Column(Integer, nullable=False)
     creation = Column(DateTime, nullable=False)

@@ -1,5 +1,5 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#!/usr/bin/env python
 
 from flask.ext.sqlalchemy import SQLAlchemy
 db = SQLAlchemy()

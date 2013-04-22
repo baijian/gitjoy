@@ -5,14 +5,19 @@ import urllib, hashlib
 from flask import Blueprint, render_template, current_app, redirect, url_for, send_from_directory
 from flask.ext.login import login_required, current_user
 
-from .forms import PubkeyForm
+from .forms import PubkeyForm, LoginForm
 #from .biz import 
 
 user = Blueprint('user', __name__)
 
-@user.route('/login')
+@user.route('/login', methods = ['POST'])
 def login():
+#    form = LoginForm()
+#    if form.validate_on_submit():
+#        flash("logged in successfully.")
+#        return redirect(request.args.get("next") or url_for("index"))
     return render_template("login.html")
+
 @user.route('/<name>/')
 def index(name):
 #    user = biz.get_user(username = name)
