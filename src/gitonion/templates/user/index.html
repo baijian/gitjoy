@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    - User
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="row-fluid">
+                <img class="img-polaroid" src="{{ img_url }}" height="210" width="200" />
+            </div>
+            <div class="row-fluid bottomline">
+                <h3>{{ username }}</h3>
+            </div>
+        </div>
+        <div class="span9">
+            <div class="row-fluid">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1" data-toggle="tab">Repositories</a></li>
+                    <li><a href="#tab2" data-toggle="tab">Starred</a></li>
+                    <li class="pull-right">
+                        <button class="btn btn-success">New</button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa-</a></div>
+                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
