@@ -41,3 +41,6 @@ nosetests.xml
 .bootstrap/
 .virtualenv/
 script/bootstrap.py
+
+#virtual env
+venv
