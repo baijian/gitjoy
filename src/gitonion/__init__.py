@@ -43,7 +43,7 @@ def configure_extensions(app):
     db.init_app(app)
     mail.init_app(app)
 
-    login_manager.login_view = ''
+    login_manager.login_view = 'login'
     login_manager.refresh_view = ''
 
     @login_manager.user_loader

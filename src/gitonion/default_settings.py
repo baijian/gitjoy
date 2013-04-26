@@ -17,7 +17,7 @@ PRODUCTION_CONIFG = CUR_DIR + '/../website_config.py'
 SECRET_KEY = r"42a3e1376f8852d1c0620a3235886bcd712879a4"
 
 #DB
-SQLALCHEMY_DATABASE_URI = 'mysql+oursql://root:123456@localhost/demo'
+SQLALCHEMY_DATABASE_URI = 'mysql+oursql://root:123456@localhost/test'
 
 #Log
 ERROR_LOG = CUR_DIR + '/../logs/flask.error.log'
