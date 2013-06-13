@@ -4,9 +4,9 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = 'gitonion',
+    name = 'gitjoy',
     version = '1.0.dev',
-    description = 'test python project',
+    description = 'flask project',
     long_description = __doc__,
     author = 'baijian',
     author_mail = 'jian.baij@gmail.com',
@@ -33,4 +33,3 @@ setup(
 
     #dependency_links = ['http://xxx.xx.com'],
 )
-
