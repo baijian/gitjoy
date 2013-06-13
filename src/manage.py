@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from flask.ext.script import Manager
 
-from gitonion import app
+from gitjoy import app
 #from gitonion.extensions import db
 #from gitonion.user import User
 
@@ -10,7 +10,7 @@ manager = Manager(app)
 
 @manager.command
 def hello():
-    print "Hello, Welcome to help develop gitonion."
+    print "Hello, Welcome to help develop gitjoy."
 
 #@manager.command
 #def initdb():
