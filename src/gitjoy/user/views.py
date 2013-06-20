@@ -28,18 +28,18 @@ def login():
         return redirect(request.args.get("next") or url_for("index"))
     return render_template("user/login.html", form=form)
 
-#@user.route('/<name>/')
-#def index(name):
-##    user = biz.get_user(username = name)
-##    if not user:
-##        abort(404)
-#    email = "bj@xiaocong.tv"
-#    default = "http://en.gravatar.com/favicon.ico"
-#    size = 80
-#    img_url = "http://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
-#    img_url += urllib.urlencode({'d':default, 's': str(size)})
-#    return render_template("user/index.html", img_url=img_url, username = 'baijian')
-#
+@user.route('/<name>/')
+def index(name):
+    user = biz.get_user(username = name)
+    if not user:
+        abort(404)
+    email = "bj@xiaocong.tv"
+    default = "http://en.gravatar.com/favicon.ico"
+    size = 80
+    img_url = "http://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
+    img_url += urllib.urlencode({'d':default, 's': str(size)})
+    return render_template("user/index.html", img_url=img_url, username = 'baijian')
+
 @user.route('/settings/')
 @login_required
 def settings():

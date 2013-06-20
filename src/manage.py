@@ -3,27 +3,28 @@
 from flask.ext.script import Manager
 
 from gitjoy import app
-#from gitonion.extensions import db
-#from gitonion.user import User
+from gitjoy.extensions import db
+from gitjoy.user import User
+from gitjoy.repo import Repo
 
 manager = Manager(app)
 
 @manager.command
 def hello():
-    print "Hello, Welcome to help develop gitjoy."
+    print "Hello, Welcome~."
 
-#@manager.command
-#def initdb():
-#    '''Init/reset database.'''
-#    db.drop_all()
-#    db.create_all()
-#    u = User(
-#        username = u'baijian',
-#        display_name = u'baijian',
-#        email = u'jian.baij@gmail.com'
-#    )
-#    db.session.add(u)
-#    db.session.commit()
+@manager.command
+def initdb():
+    '''Init/reset database.'''
+    db.drop_all()
+    db.create_all()
+    u = User(
+        username = u'baijian',
+        display_name = u'baijian',
+        email = u'jian.baij@gmail.com'
+    )
+    db.session.add(u)
+    db.session.commit()
 
 @manager.command
 def run():

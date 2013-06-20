@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from sqlalchemy.schema import Column, ForeignKey, UniqueConstraint
-from sqlalchemy.types import Integer, String, Text, Datetime
+from sqlalchemy.types import Integer, String, Text, DateTime
 
 from ..extensions import db 
 from ..utils import get_current_time
@@ -18,8 +18,8 @@ class Repo(db.Model):
 
     status = Column(Integer, nullable=False)
     flags = Column(Integer, nullable=False)
-    creation = Column(Datetime, nullable=False)
-    updated = Column(Datetime, nullable=False)
+    creation = Column(DateTime, nullable=False)
+    updated = Column(DateTime, nullable=False)
 
     __table_args__ = (UniqueConstraint("user_id","name", name="user_repos"),)
 

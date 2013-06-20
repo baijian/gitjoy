@@ -40,6 +40,7 @@ def configure_blueprints(app, blueprints=None):
         app.register_blueprint(blueprint)
 
 def configure_extensions(app):
+    #configure the app to support the sqlalchemy db
     db.init_app(app)
     mail.init_app(app)
 
