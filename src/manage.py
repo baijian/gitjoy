@@ -11,7 +11,7 @@ manager = Manager(app)
 
 @manager.command
 def hello():
-    print "Hello, Welcome~."
+    print "Hello man, Welcome~."
 
 @manager.command
 def initdb():
@@ -33,3 +33,4 @@ def run():
 
 if __name__ == '__main__':
     manager.run()
+

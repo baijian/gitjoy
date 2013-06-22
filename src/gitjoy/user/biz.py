@@ -15,3 +15,4 @@ def get_user(user_id=None, **kwargs):
         return User.query.filter_by(username=username).first()
 
     raise NotImplementedError
+

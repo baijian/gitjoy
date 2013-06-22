@@ -9,6 +9,8 @@ from sqlalchemy.schema import Column, ForeignKey
 from sqlalchemy.types import Integer, String, DateTime, BINARY, Text, Boolean
 from flask.ext.login import UserMixin
 
+from werkzeug.security import generate_password_hash, check_password_hash
+
 from ..extensions import db
 from ..utils import get_current_time
 
@@ -17,6 +19,7 @@ class User(db.Model, UserMixin):
 
     id = Column(Integer, primary_key=True)
     username = Column(String(32), unique=True, nullable=False)
+    password = Column(String(200), unique=True, nullable=False)
     display_name = Column(String(32), nullable=False)
     email = Column(String(255), unique=True, nullable=False)
     
@@ -25,14 +28,18 @@ class User(db.Model, UserMixin):
     creation = Column(DateTime, nullable=False)
     updated = Column(DateTime, nullable=False)
 
-    def __init__(self, username, display_name='', email='', status=0, flags=0):
+    def __init__(self, username, password='123456', display_name='', email='', status=0, flags=0):
         self.username = username
+        self.password = generate_password_hash(password)
         self.display_name = display_name
         self.email = email
         self.status = status
         self.flags = flags
         self.creation = get_current_time()
         self.updated = self.creation
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
 
     def __repr__(self):
         return "<User %r(%r) - %r>" % (self.username, self.display_name, self.email)
