@@ -1,0 +1,50 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+use File::Spec::Functions qw(rel2abs);
+use File::Basename qw(dirname);
+use Term::ANSIColor;
+
+my $arg_num = scalar(@ARGV);
+
+# generator one function module of app name
+# ./generator gitjoy blog
+if ($arg_num == 2) {
+    my $app_name = $ARGV[0];
+    my $module_name = $ARGV[1];
+    &new_module($app_name, $module_name);
+} else {
+    &show_help;
+}
+
+sub new_module {
+    my ($app_name, $module_name) = @_;
+    my $working_dir = dirname( rel2abs( __FILE__ ) )."/../";
+    if ( -e $working_dir."src") {
+        if ( -e $working_dir."src/$app_name/") {
+            if ( not -e $working_dir."src/$app_name/$module_name") {
+                my $module_dir = $working_dir."src/$app_name/$module_name/";
+                my @args = ("mkdir", $module_dir);
+                system(@args) == 0 or die "system @args failed: $?\n";
+                my @files = ('__init__.py', 'views.py', 'models.py',
+                        'forms.py', 'biz.py');
+                my $module_demo = $working_dir."tools/module/";
+                for (@files) {
+                    @args = ("cp", $module_demo."$_", "$module_dir");
+                    system(@args) == 0 or die "system @args failed: $?\n";
+                }
+                print color("green");
+                print "Module $module_name created successful!";
+                print color("reset");
+                print "\n";
+            }
+        }
+    }
+}
+
+sub show_help {
+    print "Usage : generator\n";
+    print "\tgenertor app module\n";
+}   
+
