@@ -27,6 +27,7 @@ setup(
         'Flask-WTF==0.8.3',
         'Flask-Mail==0.7.6',
         'Flask-FlatPages==0.3',
+        'Flask-Cache==0.12',
         'SQLAlchemy==0.8.0',
         'pygit2==0.17.3',
     ],
