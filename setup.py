@@ -30,6 +30,7 @@ setup(
         'Flask-Cache==0.12',
         'SQLAlchemy==0.8.0',
         'pygit2==0.17.3',
+        'markdown2==2.1.0',
     ],
 
     #dependency_links = ['http://xxx.xx.com'],
