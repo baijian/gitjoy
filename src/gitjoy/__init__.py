@@ -8,11 +8,13 @@ from .extensions import db, mail, login_manager
 from .user import User, user
 from .repo import repo
 from .help import help
+from .blog import blog
 
 DEFAULT_BLUEPRINTS = (
     user,
     repo,
     help,
+    blog,
 )
 
 def load_configuration(app):

@@ -8,6 +8,7 @@ from flask.ext.login import login_required, current_user
 from .forms import PubkeyForm, LoginForm
 from .biz import get_user
 from .models import User
+from ..utils import get_github_client_id
 
 user = Blueprint('user', __name__)
 
@@ -17,6 +18,11 @@ user = Blueprint('user', __name__)
 #    if form.validate_on_submit():
 #
 #    return render_template("user/login.html", form=form, )
+
+@user.route('/githublogin', methods = ["GET","POST"])
+def githublogin():
+    client_id = get_github_client_id()
+    return redirect("https://github.com/login/oauth/authorize?client_id=" + client_id)
 
 @user.route('/login', methods = ["GET","POST"])
 def login():
@@ -35,11 +41,10 @@ def login():
     return render_template("user/login.html", form=form)
 
 @user.route('/<name>/')
-@login_required
 def index(name):
-    user = get_user(username = name)
-    if not user:
-        abort(404)
+#    user = get_user(username = name)
+#    if not user:
+#        abort(404)
     email = "jian.baij@gmail.com"
     default = "http://en.gravatar.com/favicon.ico"
     size = 80
