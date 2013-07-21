@@ -6,6 +6,7 @@ from flask import Flask, render_template, request
 
 from .extensions import db, mail, login_manager
 from .user import User, user
+from .group import group
 from .repo import repo
 from .help import help
 from .blog import blog
@@ -15,6 +16,7 @@ DEFAULT_BLUEPRINTS = (
     repo,
     help,
     blog,
+    group,
 )
 
 def load_configuration(app):
