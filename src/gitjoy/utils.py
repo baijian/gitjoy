@@ -16,3 +16,13 @@ def get_github_client_id():
 
 def get_github_client_secret():
     return "ebc8cb90d1becc14448fb9ee4c3a0065fe2754fa"
+
+def get_github_oauth_address():
+    return "https://github.com/login/oauth/authorize"
+
+def get_github_redirect_uri():
+    return "http://git.joinjoy.me:5000/login"
+
+def get_github_token_address():
+    return "https://github.com/login/oauth/access_token"
+
