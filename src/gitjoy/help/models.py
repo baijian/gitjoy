@@ -37,6 +37,9 @@ def get_help_info():
     content = content + "\t $ cd blog\n"
     content = content + "\t $ git add 2013-07-21-work-report.md\n"
     content = content + "\t $ git commit -m \"add work report\"\n"
-    content = content + "\t $ git push origin master\n"
+    content = content + "\t $ git push origin master\n\n"
+
+    content = content + "### Group Module\n"
+    content = content + "\t Just group several people together that you can find the people of your group quickly.\n\n"
 
     return content
