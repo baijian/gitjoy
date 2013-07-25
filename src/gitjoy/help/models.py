@@ -8,10 +8,11 @@ def get_help_info():
     content = content + "as a supplement your can use blog to record your daily thought and weekly work-report.\n"
 
     content = content + "### Login Module\n"
-    content = content + "\tThe purpose of login using github oauth2 is that I want to connect GitJoy to GitHub,"
-    content = content + "It will provide some cool function later such as transfer your internal open source project to github and so on.\n\n"
+    content = content + "\tThe purpose of login using github oauth is that I want to connect GitJoy to GitHub,"
+    content = content + "It will provide some cool functions later such as transfer your internal open source "
+    content = content + "project to github and so on. Ofcourse if you do not want to use github login, you will not have these cool functions.\n\n"
     content = content + "***-usage guide***\n\n"
-    content = content + "* Login using github account, then it will init a account for you.\n"
+    content = content + "* Login using github account, then it will init an account for you, Or ask admin to allocate an account for you.\n"
     content = content + "* Login using init account with default password ofcourse you must change it later.\n\n"
 
     content = content + "### Code Management Module\n"
