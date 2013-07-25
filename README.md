@@ -16,9 +16,9 @@ gitjoy
 ### Team Develop using Vagrant
 
 * 1.Quick Start
-    <a href="https://gist.github.com/baijian/5356156">https://gist.github.com/baijian/5356156</a>
+    [https://gist.github.com/baijian/5356156](https://gist.github.com/baijian/5356156)
 
 * 2.Using fabric to provide your virtual machine environment when 
     you start up your virtual machine(vagrant up)
-    -><a href="http://joinjoy.me/blog/2013/04/14/use-fabric-to-deploy-your-vagrant-environment/">demo</a>.
+    ->[demo](https://raw.github.com/baijian/gitjoy/master/README.md).
 
