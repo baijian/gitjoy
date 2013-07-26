@@ -37,7 +37,12 @@ def load_configuration(app):
 def configure_hook(app):
     @app.before_request
     def before_request():
-        pass
+        method = request.form.get('_method', '').upper()
+        if method:
+            request.environ['REQUEST_METHOD'] = method
+            ctx = flask._request_ctx_stack.top
+            ctx.url_adapter.default_method = method
+            assert request.method == method
 
 def configure_blueprints(app, blueprints=None):
     if blueprints is None:
