@@ -66,7 +66,7 @@ def login():
         flash('Wrong email or password', 'error-message')
     return render_template("user/login.html", form=form)
 
-@user.route('/<name>/')
+@user.route('/<name>')
 def index(name):
 #    user = get_user(username = name)
 #    if not user:

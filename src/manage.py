@@ -10,10 +10,6 @@ from gitjoy.repo import Repo
 manager = Manager(app)
 
 @manager.command
-def hello():
-    print "Hello man, Welcome~."
-
-@manager.command
 def initdb():
     '''Init/reset database.'''
     db.drop_all()
