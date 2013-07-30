@@ -10,6 +10,8 @@ from .group import group
 from .repo import repo
 from .help import help
 from .blog import blog
+from .issue import issue
+from .star import star
 
 DEFAULT_BLUEPRINTS = (
     user,
@@ -17,6 +19,8 @@ DEFAULT_BLUEPRINTS = (
     help,
     blog,
     group,
+    issue,
+    star,
 )
 
 def load_configuration(app):
