@@ -1,26 +1,28 @@
 # -*- coding: utf-8 -*-
-
 import os
-
 from flask import Flask, render_template, request
-
 from .extensions import db, mail, login_manager
+
 from .user import User, user
 from .group import group
 from .repo import repo
+from .fork import fork
 from .help import help
 from .blog import blog
 from .issue import issue
 from .star import star
+from .search import search
 
 DEFAULT_BLUEPRINTS = (
     user,
+    group,
     repo,
+    fork,
     help,
     blog,
-    group,
     issue,
     star,
+    search,
 )
 
 def load_configuration(app):

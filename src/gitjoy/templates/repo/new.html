@@ -1,1 +1,31 @@
-test
+{% extends "layout.html" %}
+
+{% block title  %}
+    - new
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="row-fluid">
+                <img class="img-polaroid" src="{{ img_url }}" height="210" width="200" />
+            </div>
+            <div class="row-fluid bottomline">
+                <h3>{{ username }}</h3>
+            </div>
+        </div>
+        <div class="span9">
+            <div class="row-fluid">
+                <form action="/repositories" method="POST">
+                    <label>仓库名称:</label>
+                    <input type="text" name="reponame" /><br/>
+                    <label>仓库描述:</label>
+                    <input type="text" name="repodesc" /><br/>
+                    <input type="submit" class="btn btn-primary" value="创建"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

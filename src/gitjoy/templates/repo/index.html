@@ -37,8 +37,13 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab1">
-                <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
-                <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                {% if empty %}
+                    seems an empty repository
+                {% endif %}
+                {% if not empty %}
+                    <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                    <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                {% endif %}
             </div>
             <div class="tab-pane" id="tab2">
                 <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
@@ -50,5 +55,3 @@
     </div>
 </div>
 {% endblock %}
-
-

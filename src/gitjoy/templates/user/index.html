@@ -21,16 +21,14 @@
                     <li class="active"><a href="#tab1" data-toggle="tab">Repositories</a></li>
                     <li><a href="#tab2" data-toggle="tab">Starred</a></li>
                     <li class="pull-right">
-                        <button class="btn btn-success">New</button>
+                        <a href="/repositories/new">New</a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
-                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa-</a></div>
-                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
-                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
-                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
-                        <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>
+                        {% for repo in repos %}
+                            <div class="well well-small"><a href="/{{ username }}/{{ repo }}"><i class="icon-book"></i>{{ repo }}</a></div>
+                        {% endfor %}
                     </div>
                     <div class="tab-pane" id="tab2">
                         <div class="well well-small"><a href=""><i class="icon-book"></i> fdafa</a></div>

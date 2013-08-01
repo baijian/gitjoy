@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-
-import urllib, hashlib, pycurl, StringIO, json
+import os, urllib, hashlib, pycurl, StringIO, json
 
 from flask import Blueprint, render_template, current_app, redirect, request, url_for, send_from_directory
 from flask.ext.login import login_required, current_user
@@ -76,7 +75,10 @@ def index(name):
     size = 80
     img_url = "http://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
     img_url += urllib.urlencode({'d':default, 's': str(size)})
-    return render_template("user/index.html", img_url=img_url, username = 'baijian')
+    username = 'baijian'
+    repos = os.listdir('/home/git/repositories/' + username)
+    return render_template("user/index.html", img_url=img_url,
+                            username = username, repos = repos)
 
 @user.route('/settings/')
 @login_required
