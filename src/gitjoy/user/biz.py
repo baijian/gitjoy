@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from sqlalchemy import or_
+
 from ..extensions import db 
 from .models import User
 
@@ -16,3 +18,5 @@ def get_user(user_id=None, **kwargs):
 
     raise NotImplementedError
 
+def get_user_like(query):
+    return User.query.filter(or_(User.username,like('%'+query+'%'))).limit(10).all()

@@ -31,14 +31,6 @@ def load_configuration(app):
     from . import default_settings
 
     config.from_object(default_settings)
-#    if (os.environ.has_key("")):
-#        config.from_envvar("", silent=True)
-#    else:
-#        path = os.path.abspath(os.path.expanduser(""))
-#        if (os.path.isfile(path)):
-#            config.from_pyfile(path, silent=True)
-#        else:
-#            config.from_pyfile("/etc/demo.conf", silent=True)
 
 def configure_hook(app):
     @app.before_request

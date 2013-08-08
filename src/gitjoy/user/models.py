@@ -2,7 +2,7 @@
 
 #import base64
 #import struct
-#import hashlib
+import hashlib, urllib
 
 #from sqlalchemy.orm import deferred
 from sqlalchemy.schema import Column, ForeignKey
@@ -47,3 +47,10 @@ class User(db.Model, UserMixin):
     @property
     def name(self):
         return self.display_name or self.username
+
+    def photo_url(self, email):
+        default = "http://en.gravatar.com/favicon.ico"
+        size = 80
+        img_url = "http://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
+        img_url += urllib.urlencode({'d':default, 's': str(size)})
+        return img_url

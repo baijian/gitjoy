@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import current_app
+from sqlalchemy import or_
 from pygit2 import Repository, init_repository
 
 from ..extensions import db
@@ -41,3 +42,5 @@ def get_repository(namespace, repo_name):
     except:
         return None
 
+def get_repo_like(query):
+    return Repo.query.filter(or_(Repo.name,like('%'+query+'%'))).limit(10).all()

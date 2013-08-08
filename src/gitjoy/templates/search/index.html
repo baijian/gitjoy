@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block tilte %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <section class="span6">
+            <h4 class="alert alert-info">Users</h4>
+            {% for u in users %}
+                <img src="{{ u.photo_url(u.email) }}" width="40" />
+                <a href="{{ url_for() }}">{{ u.username+' | '+ u.realname if u.realname else u.username }}</a>
+                <hr>
+            {% endfor %}
+        </section>
+        <section class="span6">
+            <h4 class="alert alert-info">Repos</h4>
+            {% for r in repos %}
+                <blockquote class="inline-quote">
+                    <p>
+                        <a href="{{ url_for() }}">
+                            <strong class="name">{{ r.name }}</strong>
+                        </a>
+                    </p>
+                    <small>
+                        {{ r.desc }}
+                        
+                    </small>
+                    <div class="pull-right">
+                        --&nbsp
+                        <img src="{{  }}" width="20" />
+                        <a href="{{ url_for() }}">{{ r.user.username }}</a>
+                    </div>
+                </blockquote>
+                <hr>
+            {% endfor %}
+        </section>
+    </div>
+</div>
+{% endblock %}
