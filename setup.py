@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'gitjoy',
-    version = '1.0.dev',
+    version = '1.0',
     description = 'flask project',
     long_description = __doc__,
     author = 'baijian',
@@ -32,6 +32,4 @@ setup(
         'pygit2==0.17.3',
         'markdown2==2.1.0',
     ],
-
-    #dependency_links = ['http://xxx.xx.com'],
 )
